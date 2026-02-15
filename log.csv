@@ -13,3 +13,10 @@ timestamp,symbol,source,status,message,output_type
 2026-02-15 21:01:26,EWZ,FIA-01,error,'NoneType' object has no attribute 'get',text
 2026-02-15 21:01:29,AEP,FIA-01,error,'NoneType' object has no attribute 'get',text
 2026-02-15 21:01:30,NTR,FIA-01,error,'NoneType' object has no attribute 'get',text
+2026-02-15 21:14:09,CGNX,FIA-01,error,'dict' object has no attribute 'revenue_ttm',text
+2026-02-15 21:14:11,FRO,FIA-01,error,'dict' object has no attribute 'revenue_ttm',text
+2026-02-15 21:14:12,AMZN,FIA-01,error,'dict' object has no attribute 'revenue_ttm',text
+2026-02-15 21:14:14,PPTA,FIA-01,error,'dict' object has no attribute 'revenue_ttm',text
+2026-02-15 21:14:16,EWZ,FIA-01,error,'dict' object has no attribute 'revenue_ttm',text
+2026-02-15 21:14:18,AEP,FIA-01,error,'dict' object has no attribute 'revenue_ttm',text
+2026-02-15 21:14:19,NTR,FIA-01,error,'dict' object has no attribute 'revenue_ttm',text
