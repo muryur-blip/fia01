@@ -20,3 +20,10 @@ timestamp,symbol,source,status,message,output_type
 2026-02-15 21:14:16,EWZ,FIA-01,error,'dict' object has no attribute 'revenue_ttm',text
 2026-02-15 21:14:18,AEP,FIA-01,error,'dict' object has no attribute 'revenue_ttm',text
 2026-02-15 21:14:19,NTR,FIA-01,error,'dict' object has no attribute 'revenue_ttm',text
+2026-02-15 21:42:32,CGNX,FIA-01,success,Processed successfully,text
+2026-02-15 21:42:36,FRO,FIA-01,success,Processed successfully,text
+2026-02-15 21:42:40,AMZN,FIA-01,success,Processed successfully,text
+2026-02-15 21:42:42,PPTA,FIA-01,success,Processed successfully,text
+2026-02-15 21:42:44,EWZ,FIA-01,success,Processed successfully,text
+2026-02-15 21:42:46,AEP,FIA-01,success,Processed successfully,text
+2026-02-15 21:42:49,NTR,FIA-01,success,Processed successfully,text
