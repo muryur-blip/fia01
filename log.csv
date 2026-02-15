@@ -6,3 +6,10 @@ timestamp,symbol,source,status,message,output_type
 2026-02-15 20:44:55,EWZ,FIA-01,success,Processed successfully,text
 2026-02-15 20:44:55,AEP,FIA-01,success,Processed successfully,text
 2026-02-15 20:44:55,NTR,FIA-01,success,Processed successfully,text
+2026-02-15 21:01:16,CGNX,FIA-01,error,'NoneType' object has no attribute 'get',text
+2026-02-15 21:01:19,FRO,FIA-01,error,'NoneType' object has no attribute 'get',text
+2026-02-15 21:01:21,AMZN,FIA-01,error,'NoneType' object has no attribute 'get',text
+2026-02-15 21:01:25,PPTA,FIA-01,error,'NoneType' object has no attribute 'get',text
+2026-02-15 21:01:26,EWZ,FIA-01,error,'NoneType' object has no attribute 'get',text
+2026-02-15 21:01:29,AEP,FIA-01,error,'NoneType' object has no attribute 'get',text
+2026-02-15 21:01:30,NTR,FIA-01,error,'NoneType' object has no attribute 'get',text
