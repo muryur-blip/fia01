@@ -1,47 +1,53 @@
-def format_report(financials: dict, institutional: dict) -> str:
+def format_report(financials, institutional) -> str:
     """
     Combine financial and institutional data into a clean text report.
     """
 
-    symbol = financials.get("symbol", "N/A")
+    # -----------------------------
+    # FINANCIAL SECTION
+    # -----------------------------
+    if financials is None:
+        return "No financial data available.\n"
 
-    # --- Financial Section ---
+    symbol = getattr(financials, "symbol", "N/A")
+
     fin_section = f"""
 ==============================
   FINANCIAL OVERVIEW — {symbol}
 ==============================
 
-Revenue (TTM):        {financials.get("revenue_ttm")}
-Quarterly Growth:     {financials.get("revenue_quarter")}
-Net Income:           {financials.get("net_income")}
-EPS (Trailing):       {financials.get("eps")}
-P/E (Trailing):       {financials.get("pe")}
-Forward P/E:          {financials.get("forward_pe")}
-Price/Sales (TTM):    {financials.get("ps")}
-PEG Ratio:            {financials.get("peg")}
-Total Debt:           {financials.get("total_debt")}
-Debt/Equity:          {financials.get("de_ratio")}
-Free Cash Flow:       {financials.get("free_cash_flow")}
+Revenue (TTM):        {financials.revenue_ttm}
+Quarterly Growth:     {financials.revenue_quarter}
+Net Income:           {financials.net_income}
+EPS (Trailing):       {financials.eps}
+P/E (Trailing):       {financials.pe}
+Forward P/E:          {financials.forward_pe}
+Price/Sales (TTM):    {financials.ps}
+PEG Ratio:            {financials.peg}
+Total Debt:           {financials.total_debt}
+Debt/Equity:          {financials.de_ratio}
+Free Cash Flow:       {financials.free_cash_flow}
 """
 
-    # --- Institutional Section ---
-    holders = institutional.get("holders", [])
+    # -----------------------------
+    # INSTITUTIONAL SECTION
+    # -----------------------------
     inst_section = f"""
 ==============================
   INSTITUTIONAL HOLDERS — {symbol}
 ==============================
 """
 
-    if not holders:
+    if institutional is None or not institutional.top_holders:
         inst_section += "No institutional holder data available.\n"
     else:
-        for h in holders:
+        for h in institutional.top_holders:
             inst_section += (
-                f"\nHolder:       {h.get('holder')}"
-                f"\nShares Held:  {h.get('shares')}"
-                f"\nChange (%):   {h.get('change_pct')}"
-                f"\nReport Date:  {h.get('report_date')}\n"
+                f"\nHolder:       {h.name}"
+                f"\nShares Held:  {h.position}"
+                f"\nChange (%):   {h.change_pct}"
+                f"\nReport Date:  {h.filing_date}\n"
             )
 
-    # Final combined report
     return fin_section + "\n" + inst_section
+
