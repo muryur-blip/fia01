@@ -1,6 +1,7 @@
 def format_report(financials, institutional) -> str:
     """
     Combine financial and institutional data into a clean text report.
+    Supports both dict and dataclass inputs.
     """
 
     # -----------------------------
@@ -9,24 +10,30 @@ def format_report(financials, institutional) -> str:
     if financials is None:
         return "No financial data available.\n"
 
-    symbol = getattr(financials, "symbol", "N/A")
+    # financials dict mi dataclass mı?
+    def fget(key):
+        if isinstance(financials, dict):
+            return financials.get(key)
+        return getattr(financials, key, None)
+
+    symbol = fget("symbol") or "N/A"
 
     fin_section = f"""
 ==============================
   FINANCIAL OVERVIEW — {symbol}
 ==============================
 
-Revenue (TTM):        {financials.revenue_ttm}
-Quarterly Growth:     {financials.revenue_quarter}
-Net Income:           {financials.net_income}
-EPS (Trailing):       {financials.eps}
-P/E (Trailing):       {financials.pe}
-Forward P/E:          {financials.forward_pe}
-Price/Sales (TTM):    {financials.ps}
-PEG Ratio:            {financials.peg}
-Total Debt:           {financials.total_debt}
-Debt/Equity:          {financials.de_ratio}
-Free Cash Flow:       {financials.free_cash_flow}
+Revenue (TTM):        {fget("revenue_ttm")}
+Quarterly Growth:     {fget("revenue_quarter")}
+Net Income:           {fget("net_income")}
+EPS (Trailing):       {fget("eps")}
+P/E (Trailing):       {fget("pe")}
+Forward P/E:          {fget("forward_pe")}
+Price/Sales (TTM):    {fget("ps")}
+PEG Ratio:            {fget("peg")}
+Total Debt:           {fget("total_debt")}
+Debt/Equity:          {fget("de_ratio")}
+Free Cash Flow:       {fget("free_cash_flow")}
 """
 
     # -----------------------------
@@ -38,7 +45,7 @@ Free Cash Flow:       {financials.free_cash_flow}
 ==============================
 """
 
-    if institutional is None or not institutional.top_holders:
+    if institutional is None or not getattr(institutional, "top_holders", []):
         inst_section += "No institutional holder data available.\n"
     else:
         for h in institutional.top_holders:
@@ -50,4 +57,3 @@ Free Cash Flow:       {financials.free_cash_flow}
             )
 
     return fin_section + "\n" + inst_section
-
